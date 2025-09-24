@@ -1,22 +1,21 @@
-function display(val) {
-    document.getElementById('result').value += val;
+function appendCharacter(char) {
+    document.getElementById('result').value += char;
 }
 
-function calculate() {
-    let x = document.getElementById('result').value;
-    try {
-        let y = eval(x);
-        document.getElementById('result').value = y;
-    } catch (e) {
-        document.getElementById('result').value = 'Error';
-    }
-}
-
-function clearScreen() {
+function clearDisplay() {
     document.getElementById('result').value = '';
 }
 
-function deleteChar() {
-    var value = document.getElementById("result").value;
-    document.getElementById("result").value = value.substr(0, value.length - 1);
+function deleteLast() {
+    let currentResult = document.getElementById('result').value;
+    document.getElementById('result').value = currentResult.slice(0, -1);
+}
+
+function calculateResult() {
+    let result = document.getElementById('result').value;
+    try {
+        document.getElementById('result').value = eval(result);
+    } catch (error) {
+        document.getElementById('result').value = 'Error';
+    }
 }
